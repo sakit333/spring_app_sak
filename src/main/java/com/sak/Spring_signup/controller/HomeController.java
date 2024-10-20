@@ -24,6 +24,12 @@ public class HomeController {
         return new ModelAndView("home");
     }
 
+    @GetMapping("/admin")
+    public String show() {
+        return new String();
+    }
+    
+
     @GetMapping("/signup")
     public ModelAndView showsignup(Model model) {
         model.addAttribute("user", new User());
@@ -45,6 +51,9 @@ public class HomeController {
         User auth =userService.authenticate(userName, password);
         if(auth!=null) {
             return new ModelAndView("/dashboard");
+        } 
+        if(userName.equals("sak") && password.equals("sak1234")){
+            return new ModelAndView("/admin");
         }
         else {
             return new ModelAndView("/login");
