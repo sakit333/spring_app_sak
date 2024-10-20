@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form th:action="@{/signup}" method="post" th:object="${user}">
+            <div class="form-group">
+                <label for="userName">Username:</label>
+                <input type="text" id="userName" th:field="*{userName}" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" th:field="*{age}" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" th:field="*{gender}" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="emailId">Email:</label>
+                <input type="email" id="emailId" th:field="*{emailId}" required>
+            </div>
+            <div class="form-group">
+                <label for="emailId">Password:</label>
+                <input type="password" id="password" th:field="*{password}" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+        <div th:if="${success}" class="success" th:text="${success}"></div>
+    </div>
+</body>
+</html>
