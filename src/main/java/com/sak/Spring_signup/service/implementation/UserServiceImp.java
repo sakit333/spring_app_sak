@@ -1,5 +1,7 @@
 package com.sak.Spring_signup.service.implementation;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -23,12 +25,17 @@ public class UserServiceImp implements UserService {
         userRepository.save(user);
         return new ModelAndView("login");
     }
-    
 
     @Override
-	public String login(String userName, String password, ModelMap map, HttpSession session) {
-        User user = userRepository.findByUserName(userName);
-		return "dashboard";
-	}
+    public Optional<User> authenticate(String userName, String password) {
+        return userRepository.findByUsernameAndPassword(userName, password);
+    }
+    
+
+    // @Override
+	// public String login(String userName, String password, ModelMap map, HttpSession session) {
+    //     User user = userRepository.findByUserName(userName);
+	// 	return "dashboard";
+	// }
 
 }

@@ -1,5 +1,7 @@
 package com.sak.Spring_signup.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,13 +51,13 @@ public class HomeController {
     }
 
     @PostMapping("/login")
-    public String getlogin(@RequestParam String userName, @RequestParam String password) {
-        // return userService.login(userName, password, model, session);
-        System.out.println("User Name: " + userName);
-        System.out.println("Password: " + password);
-        if(userName.equals("admin") && password.equals("admin")) {
-            return "dashboard";
+    public ModelAndView getlogin(@RequestParam String userName, @RequestParam String password) {
+        Optional<User> auth =userService.authenticate(userName, password);
+        if(auth!=null) {
+            return new ModelAndView("redirect:/dashboard");
         }
-        return "login";
+        else {
+            return new ModelAndView("redirect:/login");
+        }
     }
 }
