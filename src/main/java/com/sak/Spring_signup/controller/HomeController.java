@@ -23,11 +23,6 @@ public class HomeController {
     public ModelAndView home() {
         return new ModelAndView("home");
     }
-
-    @GetMapping("/admin")
-    public String show() {
-        return new String();
-    }
     
 
     @GetMapping("/signup")
