@@ -13,5 +13,5 @@ import jakarta.servlet.http.HttpSession;
 public interface UserService {
     ModelAndView saveUser(User user);
     // String login(String userName, String password, ModelMap map, HttpSession session);
-    Optional<User> authenticate(String userName, String password);
+    User authenticate(String userName, String password);
 }

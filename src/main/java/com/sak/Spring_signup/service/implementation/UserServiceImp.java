@@ -27,8 +27,9 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public Optional<User> authenticate(String userName, String password) {
-        return userRepository.findByUsernameAndPassword(userName, password);
+    public User authenticate(String userName, String password) {
+        System.out.println(userName + " " + password+" userService -" + userRepository.findByUserNameAndPassword(userName, password));
+        return userRepository.findByUserNameAndPassword(userName, password);
     }
     
 

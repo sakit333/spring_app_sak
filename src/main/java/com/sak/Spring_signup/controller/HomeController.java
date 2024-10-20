@@ -52,12 +52,14 @@ public class HomeController {
 
     @PostMapping("/login")
     public ModelAndView getlogin(@RequestParam String userName, @RequestParam String password) {
-        Optional<User> auth =userService.authenticate(userName, password);
+        System.out.println(userName+" "+password);
+        User auth =userService.authenticate(userName, password);
+        System.out.println(auth);
         if(auth!=null) {
-            return new ModelAndView("redirect:/dashboard");
+            return new ModelAndView("/dashboard");
         }
         else {
-            return new ModelAndView("redirect:/login");
+            return new ModelAndView("/login");
         }
     }
 }
