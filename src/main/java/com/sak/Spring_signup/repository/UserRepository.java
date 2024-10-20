@@ -6,4 +6,6 @@ import com.sak.Spring_signup.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findByUserName(String userName);
+
 }

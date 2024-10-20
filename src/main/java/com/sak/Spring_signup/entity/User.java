@@ -17,17 +17,14 @@ public class User {
 
     @Column(name = "user_name")
     private String userName;
-
-    @Column(name = "email_id")
+  
     private String emailId;
-    @Column(name = "age")
+
     private Integer age;
-    @Column(name = "gender")
+
     private String gender;
 
-    @Column(name = "password")
     private String password;
-
 
 }
 
