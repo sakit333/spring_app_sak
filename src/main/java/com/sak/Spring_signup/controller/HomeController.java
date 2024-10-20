@@ -1,13 +1,15 @@
 package com.sak.Spring_signup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+// import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+// import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sak.Spring_signup.entity.User;
 import com.sak.Spring_signup.repository.UserRepository;
@@ -16,35 +18,34 @@ import com.sak.Spring_signup.service.UserService;
 import jakarta.servlet.http.HttpSession;
 
 
-@Controller
+// @Controller
+@RestController
 public class HomeController {
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private UserRepository userRepository;
+   @Autowired
+   private UserService userService;
     
     @GetMapping("/")
-    public String home() {
-        return "home";
+    public ModelAndView home() {
+        // return "home";
+        return new ModelAndView("home");
     }
 
     @GetMapping("/signup")
-    public String showsignup(Model model) {
+    public ModelAndView showsignup(Model model) {
         model.addAttribute("user", new User());
-        return "signup";
+        // return "signup";
+        return new ModelAndView("signup");
     }  
 
     @PostMapping("/signup")
-    public String getsignup(@ModelAttribute User user) {
-        userRepository.save(user);
-        return "login";
+    public ModelAndView getsignup(@ModelAttribute User user) {
+        return userService.saveUser(user);
     }
 
     @GetMapping("/login")
-    public String showlogin() {
-        return "login";
+    public ModelAndView showlogin() {
+        return new ModelAndView("login");
     }
 
     @PostMapping("/login")
