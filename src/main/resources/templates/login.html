@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:replace="~{base::layout(~{::section})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
 <body>
+    <section>
     <h2>Login</h2>
     <form th:action="@{/login}" method="post">
         <div>
@@ -19,5 +20,6 @@
         <button type="submit">Login</button>
     </form>
     <div th:if="${error}" th:text="${error}"></div>
+</section>
 </body>
 </html>
