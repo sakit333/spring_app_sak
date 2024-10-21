@@ -29,6 +29,9 @@ public class AdminController {
         return model;
     }
 
-    
+    @GetMapping("/logout")
+    public ModelAndView logout() {
+        return new ModelAndView("redirect:/login");
+    }
 
 }

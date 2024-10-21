@@ -6,12 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <section>
-        <h1>Admin Dashboard</h1>
-        <h2>User Details</h2>
-        <a href="/admin/user_list">UserList</a>
-        <a href="/products">Products</a>
-        <a href="/logout">Logout</a>
+    <section class="container mt-5 text-center">
+        <h1 class="mb-3 ">Admin Dashboard</h1>
+        <h2 class="mb-3">Details</h2>
+        <div class="d-flex flex-column flex-md-row justify-content-start">
+            <a href="/admin/user_list" class="btn btn-primary me-md-2 mb-2 mb-md-0">UserList</a>
+            <a href="/admin/products" class="btn btn-secondary me-md-2 mb-2 mb-md-0">Products</a>
+            <a href="/admin/logout" class="btn btn-danger">Logout</a>
+        </div>
     </section>
 </body>
 </html>
