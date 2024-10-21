@@ -24,7 +24,11 @@ public class AdminController {
 
     @GetMapping("/user_list")
     public ModelAndView userList() {
-        return new ModelAndView("user_list", "users", userRepository.findAll());
+        ModelAndView model = new ModelAndView("user_list");
+        model.addObject("users", userRepository.findAll());
+        return model;
     }
+
+    
 
 }
