@@ -18,7 +18,9 @@ public class User {
   
     private String emailId;
 
-    private Integer age;
+    private String address;
+
+    private Long phoneNumber;
 
     private String gender;
 
