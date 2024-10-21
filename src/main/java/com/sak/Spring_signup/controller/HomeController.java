@@ -45,7 +45,7 @@ public class HomeController {
     public ModelAndView getlogin(@RequestParam String userName, @RequestParam String password) {
         User auth =userService.authenticate(userName, password);
         if(auth!=null) {
-            return new ModelAndView("/dashboard");
+            return new ModelAndView("/user_dash");
         } 
         if(userName.equals("sak") && password.equals("sak1234")){
             return new ModelAndView("/admin");
