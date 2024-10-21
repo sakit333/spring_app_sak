@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<head>
+    <section>
+        <h1>Admin Dashboard</h1>
+        <h2>User Details</h2>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.userId}"></td>
+                    <td th:text="${user.userName}"></td>
+                    <td th:text="${user.emailId}"></td>
+                    <td th:text="${user.phoneNumber}"></td>
+                    <td th:text="${user.gender}"></td>
+                    <td th:text="${user.password}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</head>

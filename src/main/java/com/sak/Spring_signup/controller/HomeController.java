@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +15,7 @@ import com.sak.Spring_signup.service.UserService;
 
 
 @RestController
+@RequestMapping("/")
 public class HomeController {
 
    @Autowired
@@ -48,10 +50,10 @@ public class HomeController {
             return new ModelAndView("/user_dash");
         } 
         if(userName.equals("sak") && password.equals("sak1234")){
-            return new ModelAndView("/admin");
+            return new ModelAndView("redirect:/admin/admin_dash");
         }
         else {
-            return new ModelAndView("/login");
+            return new ModelAndView("/login").addObject("error", "Invalid credentials. Please try again.");
         }
     }
 }

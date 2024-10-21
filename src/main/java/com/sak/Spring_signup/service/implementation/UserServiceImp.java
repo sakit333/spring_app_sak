@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sak.Spring_signup.entity.User;
 import com.sak.Spring_signup.repository.UserRepository;
 import com.sak.Spring_signup.service.UserService;
+import java.util.List;
 
 @Service
 public class UserServiceImp implements UserService {
@@ -23,6 +24,11 @@ public class UserServiceImp implements UserService {
     @Override
     public User authenticate(String userName, String password) {
         return userRepository.findByUserNameAndPassword(userName, password);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll(); // Fetch all users from the repository
     }
     
 }
