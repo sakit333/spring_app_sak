@@ -1,14 +1,18 @@
 package com.sak.Spring_signup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sak.Spring_signup.entity.Product;
+import com.sak.Spring_signup.repository.ProductRepository;
 import com.sak.Spring_signup.repository.UserRepository;
-
-
+import com.sak.Spring_signup.service.ProductService;
 
 @RestController
 @RequestMapping("/admin")
@@ -16,6 +20,12 @@ public class AdminController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping("/admin_dash")
     public ModelAndView adminDash() {
@@ -34,4 +44,24 @@ public class AdminController {
         return new ModelAndView("redirect:/login");
     }
 
+    @GetMapping("/add_product")
+    public ModelAndView showAddProductForm(Model model) {
+        model.addAttribute("product", new Product()); // Add a new product object to the model
+        return new ModelAndView("add_product"); // Return the view for adding a product
+    }
+
+    @PostMapping("/add_product")
+    public ModelAndView addProduct(@ModelAttribute Product product) {
+        productService.saveProduct(product); // Save the product using ProductService
+        return new ModelAndView("redirect:/admin/admin_dash"); // Redirect to admin dashboard
+    }
+
+    @GetMapping("/get_product")
+    public ModelAndView getProduct() {
+        ModelAndView model =new ModelAndView("get_product");
+        model.addObject("products", productRepository.findAll());
+        return model;
+    }
+    
+    
 }

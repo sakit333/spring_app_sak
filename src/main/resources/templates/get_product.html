@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    <section>
+    <h1>Product List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.productId}">Product ID</td>
+                <td th:text="${product.productName}">Product Name</td>
+                <td th:text="${product.productDescription}">Product Description</td>
+                <td th:text="${product.price}">Product Price</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
